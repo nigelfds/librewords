@@ -18,9 +18,9 @@ def game
         puts "#{count}. Enter 5 letter guess".white.on_black
         guess = gets.chomp
     
-        if (LibreWordle.valid?(guess)) 
+        if (LibreWords.valid?(guess)) 
             guesses.push guess
-            result = LibreWordle.evaluate(guess, target)
+            result = LibreWords.evaluate(guess, target)
             is_solved = result[0]
             puts "\n#{result[1]}\n\n"
         else

@@ -1,6 +1,6 @@
 require 'colorize'
 
-class LibreWordle
+class LibreWords
     def self.valid? guess
         guess.length == 5 && DICT.include?(guess.downcase)
     end

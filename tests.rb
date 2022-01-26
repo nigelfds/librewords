@@ -4,8 +4,8 @@ require './library'
 class TestMeme < Minitest::Test
 
   def test_that_simple_words_work
-    assert LibreWordle.evaluate('storm','storm')[0]
-    refute LibreWordle.evaluate('beard','storm')[0]   
+    assert LibreWords.evaluate('storm','storm')[0]
+    refute LibreWords.evaluate('beard','storm')[0]   
   end
 
   def test_complex_guess_robot_against_stood
@@ -17,7 +17,7 @@ class TestMeme < Minitest::Test
              "B".white.on_black,
              "O".green.on_black,
              "T".yellow.on_black].join
-    actual = LibreWordle.evaluate(guess,target)[1]
+    actual = LibreWords.evaluate(guess,target)[1]
     puts "\nTEST: Target #{target}, answer #{answer}, actual #{actual}"    
     assert_equal answer, actual
     
@@ -32,7 +32,7 @@ class TestMeme < Minitest::Test
              "O".green.on_black,
              "O".white.on_black,
              "D".white.on_black].join
-    actual = LibreWordle.evaluate(guess,target)[1]
+    actual = LibreWords.evaluate(guess,target)[1]
     puts "\nTEST: Target #{target}, answer #{answer}, actual #{actual}"    
     assert_equal answer, actual
   end
@@ -47,7 +47,7 @@ class TestMeme < Minitest::Test
              "O".yellow.on_black,
              "T".white.on_black].join
 
-    actual = LibreWordle.evaluate(guess,target)[1]
+    actual = LibreWords.evaluate(guess,target)[1]
     puts "\nTEST: Target #{target}, answer #{answer}, actual #{actual}"    
     assert_equal answer, actual
   end
@@ -62,7 +62,7 @@ class TestMeme < Minitest::Test
              "O".white.on_black,
              "T".green.on_black].join
 
-    actual = LibreWordle.evaluate(guess,target)[1]
+    actual = LibreWords.evaluate(guess,target)[1]
     puts "\nTEST: Target #{target}, answer #{answer}, actual #{actual}"    
     assert_equal answer, actual
   end
