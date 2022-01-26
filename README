@@ -5,3 +5,8 @@ lemma.csv is common words by frequency from https://www.kilgarriff.co.uk/BNClist
 
 Using lemma for the target words only. TODO extract this from the game code to prep task
 
+to play the game `ruby play.rb`
+
+to run tests `ruby tests.rb`
+
+
