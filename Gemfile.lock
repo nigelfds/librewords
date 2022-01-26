@@ -3,6 +3,8 @@ GEM
   specs:
     colorize (0.8.1)
     csv (3.2.2)
+    minitest (5.15.0)
+    rake (13.0.6)
 
 PLATFORMS
   arm64-darwin-21
@@ -10,6 +12,8 @@ PLATFORMS
 DEPENDENCIES
   colorize
   csv
+  minitest
+  rake
 
 BUNDLED WITH
    2.2.32
