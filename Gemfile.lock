@@ -1,0 +1,15 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    colorize (0.8.1)
+    csv (3.2.2)
+
+PLATFORMS
+  arm64-darwin-21
+
+DEPENDENCIES
+  colorize
+  csv
+
+BUNDLED WITH
+   2.2.32

@@ -1,0 +1,7 @@
+english3.txt is the whole download of 194k words from http://www.gwicks.net/dictionaries.htm
+parse with make_dict.rb to generate just the 5 letter words for input validation as dict.txt
+
+lemma.csv is common words by frequency from https://www.kilgarriff.co.uk/BNClists/lemma.num
+
+Using lemma for the target words only. TODO extract this from the game code to prep task
+
