@@ -2,7 +2,33 @@
 <html>
 <head>
   <title>Librewords: A fun free word game</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.5,maximum-scale=1.5,user-scalable=no"/>
+  <style>
+    footer {
+        margin-top:20px;
+        border-top:1px solid #737373;
+        font-size: 0.7em;
+        width: 60%;
+    }
+
+    .signoff {
+        font-size:10px;
+        line-height:24px;
+        color:#737373;
+        border-top:1px solid #737373;
+        width: 60%;
+    }
+    .error {
+        color: red;
+        font-size:10px;
+    }
+    .end {
+        color: green;
+    }
+    .success, .solved {
+        color: green;
+    }
+  </style>
 </head>
 <body>
     <header class="page-header">
@@ -16,25 +42,23 @@
 
         <form action="/game" method="post">
         <% if @game.is_solved %>
-            <p style="color:green">Well Done!</p>
+            <p class="solved">Well Done!</p>
         <% elsif @game.over? %>
-            <p style="color:red">Sorry. The answer was <%= @game.target.upcase %> </p>
+            <p class="end">Sorry. The answer was <%= @game.target.upcase %> </p>
         <% else %>
-            Enter a 5 letter word
-            <br>
-            <input type="text" name="guess" value="">  
-            <p style="color:red"> <%= @error || '' %></p>
-            <input type="submit" value="submit">
+            <p class="error"> <%= @error || '' %></p>        
+            <input type="text" required="required" name="guess" maxlength="5" placeholder="Type here..."/>                
+            <input type="submit" value="Try"/>
         <% end %> 
         </form>
 
         <form action="/new_game" method="post"> 
-            <br><br>
-        <input type="submit" value="New Game">
+            <br>
+            <input type="submit" value="New Game">
         </form>
     </main>
 
-    <footer style="margin-top:20px;border-top:1px solid #737373">
+    <footer style="">
         <h3>How to Play</h3>
         <p>Guess a secret 5 letter word in 6 tries. Each guess must be a valid 5 letter word. Hit the enter button to submit.</p>
         <p>After each guess, the color of the letters will change to show how close your guess was to the secret word.</p>
@@ -42,7 +66,7 @@
         <p>The yellow letter is in the word but in the wrong spot.</p>
         <p>The white letter is not in the word in any spot.</p>
     </footer>
-    <p style="font-size:10px;line-height:24px;color:#737373;border-top:1px solid #737373">Made with love in Melbourne ;) have fun</p>
+    <p class="signoff">Made with love in Melbourne ;) have fun</p>
 </body>
 </html> 
 

@@ -26,6 +26,7 @@ end
 
 post '/new_game' do
     session[:game] = nil
+    session[:error] = nil
     redirect to('/')
 end
 
