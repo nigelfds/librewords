@@ -3,8 +3,27 @@ GEM
   specs:
     colorize (0.8.1)
     csv (3.2.2)
+    daemons (1.4.1)
+    eventmachine (1.2.7)
+    json (2.6.1)
     minitest (5.15.0)
+    mustermann (1.1.1)
+      ruby2_keywords (~> 0.0.1)
+    rack (2.2.3)
+    rack-protection (2.1.0)
+      rack
     rake (13.0.6)
+    ruby2_keywords (0.0.5)
+    sinatra (2.1.0)
+      mustermann (~> 1.0)
+      rack (~> 2.2)
+      rack-protection (= 2.1.0)
+      tilt (~> 2.0)
+    thin (1.8.1)
+      daemons (~> 1.0, >= 1.0.9)
+      eventmachine (~> 1.0, >= 1.0.4)
+      rack (>= 1, < 3)
+    tilt (2.0.10)
 
 PLATFORMS
   arm64-darwin-21
@@ -12,8 +31,11 @@ PLATFORMS
 DEPENDENCIES
   colorize
   csv
+  json
   minitest
   rake
+  sinatra
+  thin
 
 BUNDLED WITH
    2.2.32

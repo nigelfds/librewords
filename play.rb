@@ -2,7 +2,6 @@ require 'csv'
 require 'colorize'
 require './library'
 
-# DICT = File.readlines('dict.txt').map {|w| w.gsub("\n",'') }
 WORDS = File.readlines('words.txt').map {|w| w.gsub("\n",'') }
 MAX_GUESSES = 6
 

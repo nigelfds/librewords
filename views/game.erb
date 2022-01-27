@@ -1,0 +1,25 @@
+<p>welcome to LibreWords</p>
+
+<% @game.results.each do |result| %>
+    <p><%= Formatter.sanitize_ansi_data result %></p>
+<% end %> 
+
+<form action="/game" method="post">
+  Enter a 5 letter word
+  <br>
+  <input type="text" name="guess" value="">  
+  <p> <%= @error || '' %></p>
+
+<% if @game.is_solved %>
+    <p style="color:green">Well Done!</p>
+<% elsif @game.over? %>
+    <p style="color:red">Sorry. The answer was <%= @game.target.upcase %> </p>
+<% else %>
+    <input type="submit" value="submit">
+<% end %> 
+</form>
+
+<form action="/new_game" method="post"> 
+    <br><br><br>
+  <input type="submit" value="New Game">
+</form>
