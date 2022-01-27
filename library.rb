@@ -107,7 +107,7 @@ class Formatter
         data.gsub!(/\033\[0m/,"</b></span>")
         
         data.gsub!(/\033\[[\d\;]{2,}m.*?<\/b><\/span>/){ |data|
-            span = "<span style='"
+            span = "<span class='terminal' style='"
             content = ""
             /\033\[([\d\;]{2,})m(.*?)<\/b><\/span>/.match(data) {|m|
                 content = m[2]
@@ -123,7 +123,7 @@ class Formatter
                             #do nothing
                         end
                     else
-                        span += "font-weight:bold; padding:5px;"
+                        span += "font-weight:bold;"
                     end
                 end
             }
