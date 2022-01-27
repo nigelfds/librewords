@@ -41,4 +41,8 @@ class Game
         params = JSON.parse(from_string || '{}')
         Game.new params
     end
+
+    def unused_letters        
+        ('a'..'z').to_a - @guesses.join.split('').uniq
+    end
 end

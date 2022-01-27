@@ -35,6 +35,17 @@
         font-size: 1.5em;
         font-family: monospace;
     }
+
+    .alphabet {
+        width: 60%;
+    }
+    .letter {
+        border:1px solid #f3f3f3;
+        padding: 1px 5px;        
+        font-size: 0.7em;
+        font-family: monospace;
+        color: #636363;
+    }
   </style>
 </head>
 <body>
@@ -57,8 +68,12 @@
             <input type="text" required="required" name="guess" maxlength="5" placeholder="Type here..."/>                
             <input type="submit" value="Try"/>
         <% end %> 
-        </form>
-    
+        </form>         
+        <p class="alphabet">
+            <% @game.unused_letters.each do |letter| %>
+                <span class="letter"><%= letter.upcase %></span>
+            <% end %> 
+        </p>
         <form action="/new_game" method="post"> 
             <br>
             <input type="submit" value="New Game">
