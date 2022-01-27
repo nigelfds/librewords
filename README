@@ -1,14 +1,20 @@
+### About the word data
+
 english3.txt is the whole download of 194k words from http://www.gwicks.net/dictionaries.htm
 parse with make_dict.rb to generate just the 5 letter words for input validation as dict.txt
 
 lemma.csv is common words by frequency from https://www.kilgarriff.co.uk/BNClists/lemma.num
+Using lemma for the target words only. 
 
-Using lemma for the target words only. TODO extract this from the game code to prep task
+### How to Play
 
-to play the game on CLI `ruby play.rb`
+To play the game on CLI `ruby play.rb`
+To play the web version `ruby index.rb` and go to http://localhost:4567/
 
-to run tests `ruby tests.rb`
+### Dev Stuff
 
-to play the web version `ruby index.rb`
+To run a full build `bundle install && rake`
 
+To run just tests `rake test`
 
+To spin up a localhost version of the app `rake server` or `rake s` for short

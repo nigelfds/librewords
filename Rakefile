@@ -24,6 +24,7 @@ task :play do
     ruby "play.rb"
 end
 
-task :s do
+task :server do
     ruby "index.rb"
 end
+task :s => :server

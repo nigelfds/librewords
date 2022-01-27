@@ -1,5 +1,6 @@
 require 'sinatra'
-require './library'
+require './src/game'
+require './src/formatter'
 
 enable :sessions
 

@@ -1,11 +1,12 @@
 require "minitest/autorun"
-require './library'
+require './src/words'
+require './src/game'
 
-class TestLibreWords < Minitest::Test
+class TestWords < Minitest::Test
 
   def test_that_simple_words_work
-    assert LibreWords.evaluate('storm','storm')[0]
-    refute LibreWords.evaluate('beard','storm')[0]   
+    assert Words.evaluate('storm','storm')[0]
+    refute Words.evaluate('beard','storm')[0]   
   end
 
   def test_complex_guess_robot_against_stood
@@ -17,7 +18,7 @@ class TestLibreWords < Minitest::Test
              "B".white.on_black,
              "O".green.on_black,
              "T".yellow.on_black].join
-    actual = LibreWords.evaluate(guess,target)[1]
+    actual = Words.evaluate(guess,target)[1]
     puts "\nTEST: Target #{target}, answer #{answer}, actual #{actual}"    
     assert_equal answer, actual
     
@@ -32,7 +33,7 @@ class TestLibreWords < Minitest::Test
              "O".green.on_black,
              "O".white.on_black,
              "D".white.on_black].join
-    actual = LibreWords.evaluate(guess,target)[1]
+    actual = Words.evaluate(guess,target)[1]
     puts "\nTEST: Target #{target}, answer #{answer}, actual #{actual}"    
     assert_equal answer, actual
   end
@@ -47,7 +48,7 @@ class TestLibreWords < Minitest::Test
              "O".yellow.on_black,
              "T".white.on_black].join
 
-    actual = LibreWords.evaluate(guess,target)[1]
+    actual = Words.evaluate(guess,target)[1]
     puts "\nTEST: Target #{target}, answer #{answer}, actual #{actual}"    
     assert_equal answer, actual
   end
@@ -62,7 +63,7 @@ class TestLibreWords < Minitest::Test
              "O".white.on_black,
              "T".green.on_black].join
 
-    actual = LibreWords.evaluate(guess,target)[1]
+    actual = Words.evaluate(guess,target)[1]
     puts "\nTEST: Target #{target}, answer #{answer}, actual #{actual}"    
     assert_equal answer, actual
   end
