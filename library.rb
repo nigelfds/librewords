@@ -1,6 +1,8 @@
 require 'colorize'
 
 class LibreWords
+    DICT = File.readlines('dict.txt').map {|w| w.gsub("\n",'') }    
+
     def self.valid? guess
         guess.length == 5 && DICT.include?(guess.downcase)
     end
