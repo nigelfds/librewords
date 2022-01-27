@@ -64,7 +64,7 @@ class Game
     # where the first is game solves yes or no,
     # and the string is the evaluation of the guess or last guess (solved or finished)
     def play guess         
-        raise ArgumentError.new("Game Over") if over? || || @is_solved 
+        raise ArgumentError.new("Game Over") if over? || @is_solved 
         raise ArgumentError.new("Invalid Word or length") unless LibreWords.valid?(guess)
                 
         @guesses.push guess
