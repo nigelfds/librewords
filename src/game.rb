@@ -43,6 +43,6 @@ class Game
     end
 
     def unused_letters        
-        ('a'..'z').to_a - @guesses.join.split('').uniq
+        ('a'..'z').to_a - @guesses.join.downcase.split('').uniq
     end
 end
