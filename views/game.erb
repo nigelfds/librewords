@@ -1,31 +1,48 @@
-<header class="page-header">
-    <h1>LibreWords</h1>
-    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
-</header>
+ <!DOCTYPE html>
+<html>
+<head>
+  <title>Librewords: A fun free word game</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
+</head>
+<body>
+    <header class="page-header">
+        <h3>Welcome to LibreWords</h3>
+    </header>
 
-<main>
-    <p>Welcome to LibreWords</p>
+    <main>
+        <% @game.results.each do |result| %>
+            <p><%= Formatter.sanitize_ansi_data result %></p>
+        <% end %> 
 
-    <% @game.results.each do |result| %>
-        <p><%= Formatter.sanitize_ansi_data result %></p>
-    <% end %> 
+        <form action="/game" method="post">
+        <% if @game.is_solved %>
+            <p style="color:green">Well Done!</p>
+        <% elsif @game.over? %>
+            <p style="color:red">Sorry. The answer was <%= @game.target.upcase %> </p>
+        <% else %>
+            Enter a 5 letter word
+            <br>
+            <input type="text" name="guess" value="">  
+            <p style="color:red"> <%= @error || '' %></p>
+            <input type="submit" value="submit">
+        <% end %> 
+        </form>
 
-    <form action="/game" method="post">
-    <% if @game.is_solved %>
-        <p style="color:green">Well Done!</p>
-    <% elsif @game.over? %>
-        <p style="color:red">Sorry. The answer was <%= @game.target.upcase %> </p>
-    <% else %>
-        Enter a 5 letter word
-        <br>
-        <input type="text" name="guess" value="">  
-        <p> <%= @error || '' %></p>
-        <input type="submit" value="submit">
-    <% end %> 
-    </form>
+        <form action="/new_game" method="post"> 
+            <br><br>
+        <input type="submit" value="New Game">
+        </form>
+    </main>
 
-    <form action="/new_game" method="post"> 
-        <br><br><br>
-    <input type="submit" value="New Game">
-    </form>
-</main>
+    <footer style="margin-top:20px;border-top:1px solid #737373">
+        <h3>How to Play</h3>
+        <p>Guess a secret 5 letter word in 6 tries. Each guess must be a valid 5 letter word. Hit the enter button to submit.</p>
+        <p>After each guess, the color of the letters will change to show how close your guess was to the secret word.</p>
+        <p>The green letter is in the word and in the correct spot.</p>
+        <p>The yellow letter is in the word but in the wrong spot.</p>
+        <p>The white letter is not in the word in any spot.</p>
+    </footer>
+    <p style="font-size:10px;line-height:24px;color:#737373;border-top:1px solid #737373">Made with love in Melbourne ;) have fun</p>
+</body>
+</html> 
+

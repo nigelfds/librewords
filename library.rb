@@ -123,7 +123,7 @@ class Formatter
                             #do nothing
                         end
                     else
-                        span += "font-weight:bold; "
+                        span += "font-weight:bold; padding:5px;"
                     end
                 end
             }

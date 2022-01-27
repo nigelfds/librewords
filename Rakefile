@@ -1,6 +1,6 @@
 require 'csv'
 
-task default: %w[prep test play]
+task default: %w[prep test]
 
 task :prep do
     dict = File.readlines './english3.txt'
@@ -22,4 +22,8 @@ end
 
 task :play do
     ruby "play.rb"
+end
+
+task :s do
+    ruby "index.rb"
 end

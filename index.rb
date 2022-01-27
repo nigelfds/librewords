@@ -5,18 +5,22 @@ enable :sessions
 
 get '/' do    
     @game = Game.make(session[:game])
+    @error = session[:error]
+
     session[:game] = @game.to_s
     erb :game
 end
 
 post '/game' do
-    @game = Game.make session[:game]
+    session[:error] = nil
+    @game = Game.make session[:game]    
     begin
         @game.play(params['guess'])        
     rescue ArgumentError => e
-        @error = e.message
+        session[:error] = e.message
     end
-    session[:game] = @game.to_s        
+    session[:game] = @game.to_s     
+    logger.info session[:game]   
     redirect to('/')
 end
 
