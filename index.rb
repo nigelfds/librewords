@@ -24,7 +24,7 @@ post '/game' do
     
     begin
         @game.play(params['guess'])
-        @stats.add(@game) if @game.over?        
+        @stats.add(@game) if @game.over? || @game.is_solved        
     rescue ArgumentError => e
         session[:error] = e.message
     end
