@@ -1,10 +1,14 @@
 require 'sinatra'
+require 'sinatra/cookies'
 require './src/game'
+require './src/stats'
 require './src/formatter'
+
 
 enable :sessions
 
-get '/' do    
+get '/' do
+    @stats = Stats.make(cookies[:stats])    
     @game = Game.make(session[:game])
     @error = session[:error]
 
@@ -13,15 +17,22 @@ get '/' do
 end
 
 post '/game' do
-    session[:error] = nil
+    @stats = Stats.make(cookies[:stats])
     @game = Game.make session[:game]    
+    
+    session[:error] = nil
+    
     begin
-        @game.play(params['guess'])        
+        @game.play(params['guess'])
+        @stats.add(@game) if @game.over?        
     rescue ArgumentError => e
         session[:error] = e.message
     end
+    
     session[:game] = @game.to_s     
+    cookies[:stats] = @stats.to_s
     logger.info session[:game]   
+    
     redirect to('/')
 end
 

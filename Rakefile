@@ -1,4 +1,5 @@
 require 'csv'
+require "rake/testtask"
 
 task default: %w[prep test]
 
@@ -13,13 +14,14 @@ task :prep do
     words = data.map{|row| row[2] if row[2].length == 5}.compact    
     File.open("words.txt", "w+") do |f|
         f.puts(words)
-    end
+    end    
 end
 
-task :test do
-    ruby "tests.rb"
+Rake::TestTask.new(:test) do |t|    
+    t.libs << "src"
+    t.test_files = FileList["tests/**/test_*.rb"]
 end
-
+  
 task :play do
     ruby "play.rb"
 end
