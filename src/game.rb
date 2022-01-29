@@ -4,10 +4,11 @@ require './src/words'
 class Game
     WORDS = File.readlines('words.txt').map {|w| w.gsub("\n",'') }
     MAX_GUESSES = 6
-    attr_reader :is_solved, :results, :target
+    attr_reader :is_solved, :results, :target, :marker
 
     def initialize params = {}
-        @target = params['target'] || WORDS.sample        
+        @marker = params[:marker] || 0
+        @target = params['target'] || WORDS[@marker]        
         @guesses = params['guesses'] || []
         @results = params['results'] || []
         @is_solved = params['is_solved'] || false          
@@ -34,12 +35,12 @@ class Game
     end
 
     def to_s
-        {target: @target, guesses: @guesses, is_solved: @is_solved, results: @results}.to_json
+        {target: @target, guesses: @guesses, is_solved: @is_solved, results: @results, marker: @marker}.to_json
     end
     
-    def self.make from_string = nil
-        params = JSON.parse(from_string || '{}')
-        Game.new params
+    def self.make from_string = nil, marker = 0
+        params = JSON.parse(from_string || '{}')        
+        Game.new(params.merge(marker: marker))
     end
 
     def unused_letters        

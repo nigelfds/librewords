@@ -1,6 +1,9 @@
 class Stats
+    attr_accessor :marker
+
     def initialize params = {}
         @games = params['games'] || []
+        @marker = params['marker'] || 0
     end
 
     def add game
@@ -8,7 +11,7 @@ class Stats
     end
 
     def to_s
-        {game: @games}.to_json
+        { game: @games, marker: @marker }.to_json
     end
     
     def self.make from_string = nil

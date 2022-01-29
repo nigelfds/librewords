@@ -11,7 +11,7 @@ task :prep do
     end
     
     data = CSV.read('lemma.csv', col_sep: ' ')
-    words = data.map{|row| row[2] if row[2].length == 5}.compact    
+    words = data.map{|row| row[2] if row[2].length == 5}.compact.shuffle    
     File.open("words.txt", "w+") do |f|
         f.puts(words)
     end    
