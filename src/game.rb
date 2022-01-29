@@ -4,7 +4,7 @@ require './src/words'
 class Game
     WORDS = File.readlines('words.txt').map {|w| w.gsub("\n",'') }
     MAX_GUESSES = 6
-    attr_reader :is_solved, :results, :target, :marker
+    attr_reader :is_solved, :results, :target, :marker, :guesses
 
     def initialize params = {}
         @marker = params[:marker] || 0

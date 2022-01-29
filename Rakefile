@@ -1,7 +1,7 @@
 require 'csv'
 require "rake/testtask"
 
-task default: %w[prep test]
+task default: %w[test]
 
 task :prep do
     dict = File.readlines './english3.txt'
